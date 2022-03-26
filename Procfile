@@ -1,0 +1,1 @@
+web: gunicorn It342.wsgi
