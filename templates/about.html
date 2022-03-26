@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CIT-U TeknoyReserve!</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div class="backimage">
+      <img src="{% static 'assets/img/cit-header.png' %}" class="img-fluid center" style="width: 800px; "> 
+  </div>
+
+  <!--<img src="{% static 'assets/img/bannerText.png' %}" style="width: 100%;">-->
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-cente">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+
+       <a class="me-auto d-block d-sm-none">TeknoyReserve!</a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{% url 'project:home_view' %}">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'project:about_view' %}">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:services_view' %}">Services</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:login_view' %}">Login</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      <a href="{% url 'project:room-reservation_view' %}" class="book-a-table-btn scrollto d-none d-lg-flex">Reserve</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= main Section ======= -->
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+              <img src="{% static 'assets/img/citu-logo.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>We help businesses find the right way to work.</h3>
+            <p class="fst-italic">
+              Our extensive network of locations enables companies of all sizes to work wherever, and however they need.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Reviews help you find your ideal conference room.</li>
+              <li><i class="bi bi-check-circle"></i> Our flexibility sets us apart. Everything we do is on flexible terms, so businesses can effortlessly scale as needs change, and take on workspace that’s right for them today, and tomorrow – wherever they need to be. By building a global network of workspaces we enable businesses to work closer to home, closer to clients, closer to new opportunities.</li>
+              <li><i class="bi bi-check-circle"></i> We believe in giving businesses choice, flexibility and access to a thriving community.</li>
+            </ul>
+            <p>
+              Choose to work from office space, coworking environments, business lounges or meeting rooms, for as little or as long as you like.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+  </main><!-- End #main -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

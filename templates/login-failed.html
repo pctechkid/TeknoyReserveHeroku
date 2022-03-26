@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CIT-U TeknoyReserve!</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <style>
+  body {
+  background: #000
+  }
+
+  .card {
+      border: none;
+      height: 320px
+  }
+
+  .forms-inputs {
+      position: relative
+  }
+
+  .forms-inputs span {
+      position: absolute;
+      top: -18px;
+      left: 10px;
+      background-color: #fff;
+      padding: 5px 10px;
+      font-size: 15px
+  }
+
+  .forms-inputs input {
+      height: 50px;
+      border: 2px solid #eee
+  }
+
+  .forms-inputs input:focus {
+      box-shadow: none;
+      outline: none;
+      border: 2px solid #000
+  }
+
+  .btn {
+      height: 50px
+  }
+
+  .success-data {
+      display: flex;
+      flex-direction: column
+  }
+
+  .bxs-badge-check {
+      font-size: 90px
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div class="backimage">
+      <img src="{% static 'assets/img/cit-header.png' %}" class="img-fluid center" style="width: 800px; "> 
+  </div>
+
+  <!--<img src="{% static 'assets/img/bannerText.png' %}" style="width: 100%;">-->
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-cente">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+
+       <a class="me-auto d-block d-sm-none">TeknoyReserve!</a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{% url 'project:home_view' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:about_view' %}">About</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'project:services_view' %}">Services</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'project:login_view' %}">Login</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <div class="container mt-5">
+    <form method="POST">
+      {% csrf_token %}
+    <div class="row d-flex justify-content-center">   
+        <div class="col-md-6">
+          <h1 style="font-size: 30px; font-weight: 500; padding: 5px; margin: 0 0 5px 0; letter-spacing: 2px; text-transform: uppercase; color: #ffffff; font-family: 'Poppins', sans-serif;">Login Portal</h1>
+            <div class="card px-5 py-5" id="form1">
+                <div class="form-data" v-if="!submitted">
+                    <div class="forms-inputs mb-4"> <span>Username</span> <input name ="username" autocomplete="off" type="text" v-model="email" v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}" v-on:blur="emailBlured = true">
+                        <div class="invalid-feedback">A valid username is required!</div>
+                    </div>
+                    <div class="forms-inputs mb-4"> <span>Password</span> <input name="password" autocomplete="off" type="password" v-model="password" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}" v-on:blur="passwordBlured = true">
+                        <div class="invalid-feedback">A valid password must be entered!</div>
+                    </div>
+
+                    <div class="mb-3"> <button class="btn w-100" style="background-color: #89343b; color: white">Login</button> </div>
+                </div>
+            </div>
+            <h1 class="float-right" style="font-size: 14px; font-weight: 500; padding: 5px; margin: 0 0 5px 0; letter-spacing: 2px; text-transform: uppercase; color: #ffffff; font-family: 'Poppins', sans-serif;">No account yet? Sign up <a href="{% url 'project:signup_view' %}" style="text-decoration: none">here</a></h1>
+        </div>
+    </div>
+    </form>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#form1',
+      data: function () {
+      return {
+      email : "",
+      emailBlured : false,
+      valid : false,
+      submitted : false,
+      password:"",
+      passwordBlured:false
+      }
+    },
+
+    methods:{
+      validate : function(){
+      this.emailBlured = true;
+      this.passwordBlured = true;
+      if( this.validEmail(this.email) && this.validPassword(this.password)){
+      this.valid = true;
+      }
+    },
+
+      validEmail : function(email) {
+        if (email.length > 0) {
+        return true;
+      }
+    },
+
+    validPassword : function(password) {
+      if (password.length > 0) {
+      return true;
+      }
+    },
+
+    submit : function(){
+          this.validate();
+          if(this.valid){
+          this.submitted = true;
+        }
+       }
+     }
+    });
+  </script>
+  <script>
+    // swal.fire({
+    //     title: "Wow!",
+    //     text: "Message!",
+    //     type: "success",
+    //     timer: 9000,
+    //     timerProgressBar: true,
+    //     icon: "success"
+    // }).then(function() {
+    //     window.location = "https://google.com";
+    // });
+    let timerInterval
+    Swal.fire({
+      title: 'Failed!',
+      html: 'Redirecting you in <b></b> milliseconds.',
+      icon: 'error',
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+      window.location = "{% url 'project:login_view' %}";
+    })
+  </script>
+  
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
