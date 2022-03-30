@@ -156,6 +156,7 @@
           <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
+
           
 
         </ul>
@@ -171,7 +172,15 @@
      <input type="date"  name="search">
      <button type="submit" id = "btnUpdateUsers" name = "btnSearch" href = "" class="btn btn-success" >Search</button>
    </form>     
-          
+     
+        
+        <!-- <input type="text"  name="search23" value= "{{ key }}" readonly> -->
+        <!-- <input type="text" value={{ most.room_id }}   name="youtube" readonly> -->        
+        
+
+        {% for yt in yot %}
+        <input type="text"   value= "{{ yt.meeting_room }}" >
+        {% endfor %}
   </div>
 
     </div>
