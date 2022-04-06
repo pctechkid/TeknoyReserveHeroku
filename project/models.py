@@ -19,7 +19,7 @@ class Admin(models.Model):
 class MeetingRooms(models.Model):
 	mid = models.BigAutoField(primary_key = True)
 	meeting_room = models.CharField(max_length=100, blank=True)
-	isAvailable = models.BooleanField(default=True, blank=True)
+	isAvailable = models.BooleanField(default=True)
 	start_date = models.DateField(blank=True, null=True)
 
 class Reservation(models.Model):

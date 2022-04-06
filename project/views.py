@@ -157,7 +157,30 @@ class RoomDashboard(View):
 
     def post(self,request):
         if request.method == 'POST':
-            if 'btnUpdateRoom' in request.POST:  
+
+            if 'btnAddRoom' in request.POST: 
+                mform = MeetingForm(request.POST)
+
+                if mform.is_valid():
+
+                    rname = request.POST.get("add-room")
+                    if (request.POST.get("isAvailable") == "on"):
+                        isavailable = True
+                    else:
+                        isavailable = False
+
+                    # isAvailable = request.POST.get("isAvailable") == True
+
+                    print(isavailable)
+
+                    addRom = MeetingRooms(meeting_room=rname, isAvailable=isavailable)
+                    addRom.save()  
+                    print(addRom)
+
+
+                    return redirect('project:room-dashboard_view') 
+
+            elif 'btnUpdateRoom' in request.POST:  
                 rid = request.POST.get("update-rid")
                 name = request.POST.get("update-username")
                 email = request.POST.get("update-email")
@@ -182,6 +205,11 @@ class RoomDashboard(View):
                 ava = MeetingRooms.objects.filter(mid=agh).update(isAvailable = True, start_date = None)
                 print(ava)
                 print('record deleted')
+
+
+
+
+
 
         return redirect('project:room-dashboard_view')
 

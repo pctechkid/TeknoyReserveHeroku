@@ -29,6 +29,8 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
+
+
   <style>
 
     .button {
@@ -111,6 +113,112 @@
       position: absolute;
       z-index: 5;
     }
+    .custom-switch {
+    padding-left: 2.25rem;
+    }
+    .custom-switch .custom-control-label::before {
+        left: -2.25rem;
+        width: 1.75rem;
+        pointer-events: all;
+        border-radius: 0.5rem;
+    }
+    .custom-switch .custom-control-label::after {
+        top: calc(0.25rem + 2px);
+        left: calc(-2.25rem + 2px);
+        width: calc(1rem - 4px);
+        height: calc(1rem - 4px);
+        background-color: #adb5bd;
+        border-radius: 0.5rem;
+        transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+        transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .custom-switch .custom-control-label::after {
+            transition: none;
+        }
+    }
+    .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+        background-color: #fff;
+        -webkit-transform: translateX(0.75rem);
+        transform: translateX(0.75rem);
+    }
+    .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(0, 123, 255, 0.5);
+    }
+    .custom-control {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5rem;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+}
+.custom-control-inline {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin-right: 1rem;
+}
+.custom-control-input {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 1rem;
+    height: 1.25rem;
+    opacity: 0;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #007bff;
+    background-color: #007bff;
+}
+.custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+    border-color: #80bdff;
+}
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+    color: #fff;
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+.custom-control-input:disabled ~ .custom-control-label,
+.custom-control-input[disabled] ~ .custom-control-label {
+    color: #6c757d;
+}
+.custom-control-input:disabled ~ .custom-control-label::before,
+.custom-control-input[disabled] ~ .custom-control-label::before {
+    background-color: #e9ecef;
+}
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+.custom-control-label::before {
+    position: absolute;
+    top: 0.25rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    content: "";
+    background-color: #fff;
+    border: #adb5bd solid 1px;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: 0.25rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    content: "";
+    background: 50%/50% 50% no-repeat;
+}
 </style>
 
 </head>
@@ -168,8 +276,56 @@
   {% block content %}
   <div style="background-color: #ffffff">
             <div>
-                <h3 class="mb-5 text-uppercase" style="margin: 0; font-size: 40px; font-weight: 700; line-height: 56px; color: #000000; font-family: 'Poppins', sans-serif;">&nbsp;Room Reservation</h3>
-            </div>
+                <h3 class="text-uppercase" style="margin: 0; font-size: 40px; font-weight: 700; color: #000000; font-family: 'Poppins', sans-serif;">&nbsp;Room Dashboard
+                    <div class="container-fluid d-flex align-items-center justify-content-lg-between">
+                        <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#awww"><i class="bi bi-plus-lg"></i>&nbsp;ADD ROOM</button>
+                    </div>
+                </h3>
+                
+                
+
+            </div><br>
+            <!-- START MODAL ADD ROOM -->
+            <div class="modal fade" id="awww" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" style="background-color:#000000">
+                          <h5 class="modal-title" style="color:#ffffff; font-family: Poppins;">Enter Details</h5>
+                          <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color:#ffffff">&times;</span>
+                          </button>
+                        </div>
+                        <form  method="post" >
+                        {% csrf_token %}
+                        <div class="modal-body">
+                          
+                                  <div class = "form-group">
+                                    
+                                    <input type="hidden" class="form-control"  placeholder="ID" name="update-rid" value = {{Users.rid}} readonly>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b>Room Name</b></label>
+                                    <input type="text" class="form-control"  name="add-room" value = {{Users.username_id}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label>  <input type="checkbox"  placeholder="Available"  id="isAvailable" name="isAvailable">
+                                    Available </label>
+
+                                  </div>
+                                  <!-- <div class = "form-group">
+                                    <label><b>Start Date</b></label>
+                                    <input type="date" class="form-control"   name="update-date" value = {{Users.date|date:'Y-m-d'}}>
+                                  </div> -->
+                              </div>
+                        <div class="modal-footer">  
+                            <button type="submit" id = "btnUpdateUsers" name = "btnAddRoom" href = "{% url 'project:room-dashboard_view' %}" class="btn btn-success" >Add Room</button>                            
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>                          
+                        </div>
+                      </div>
+                      {{ form }}
+                    </form>
+                    </div>
+                  </div>
             <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
