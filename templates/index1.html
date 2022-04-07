@@ -53,8 +53,16 @@
           <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'project:updateuser_view' %}">Account</a></li>
+          <!-- <li><a class="nav-link scrollto" href="{% url 'project:updateuser_view' %}">Account</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:user-reservation_view' %}">Reservation</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:home_view' %}">Log Out</a></li> -->
+          <li class="dropdown"><a href="#"><span>User Panel</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'project:updateuser_view' %}">Profile</a></li>
+              <li><a href="{% url 'project:user-reservation_view' %}">My Reservations</span></a></li>
+              <li><a href="{% url 'project:home_view' %}"><span>Log Out</span></a></li>
+            </ul>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
