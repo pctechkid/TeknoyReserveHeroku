@@ -59,6 +59,10 @@ class LoginSuccess(View):
     def get(self, request):
         return render(request,'login-success.html')
 
+class LoginAdminSuccess(View):
+    def get(self, request):
+        return render(request,'login-adminsuccess.html')
+
 class LoginFailed(View):
     def get(self, request):
         return render(request,'login-failed.html')
@@ -385,7 +389,6 @@ class LoginPage(View):
         return render(request,'login.html')
 
     def post(self, request):
-        if request.method == 'POST':
             username = request.POST.get("username")
             password = request.POST.get("password")
             check_user = Users.objects.filter(username=username, password=password)
@@ -395,13 +398,12 @@ class LoginPage(View):
                 request.session['usern'] = username
                 if Users.objects.filter(username=username).count()>0: 
                         return redirect('project:loginsuccess_view')
+                else:
+                    return redirect('project:loginfailed_view')
 
             if check_admin:
                 request.session['admin'] = username
-                if Admin.objects.filter(username=username).count()>0:    
-                    return redirect('project:user-dashboard_view')
-            
-            else:   
-                return redirect('project:loginfailed_view')
-        else:   
-            return render(request,"signup.html")
+                if Admin.objects.filter(username=username, password=password).count()>0:
+                    return redirect('project:loginadminsuccess_view')
+                else:
+                    return redirect('project:loginfailed_view')
