@@ -315,15 +315,10 @@
                                     <label><b>Room Name</b></label>
                                     <input type="text" class="form-control"  name="add-room" value = {{Users.username_id}}>
                                   </div>
-                                  <div class = "form-group">
-                                    <label>  <input type="checkbox"  placeholder="Available"  id="isAvailable" name="isAvailable">
-                                    Available </label>
-
+                                  <div class="custom-control custom-switch">
+                                      <br>&nbsp;&nbsp;<input type="checkbox" placeholder="Available" class="custom-control-input" id="isAvailable" name="isAvailable" checked>
+                                      <label class="custom-control-label" for="isAvailable">Available</label>
                                   </div>
-                                  <!-- <div class = "form-group">
-                                    <label><b>Start Date</b></label>
-                                    <input type="date" class="form-control"   name="update-date" value = {{Users.date|date:'Y-m-d'}}>
-                                  </div> -->
                               </div>
                         <div class="modal-footer">  
                             <button type="submit" id = "btnUpdateUsers" name = "btnAddRoom" href = "{% url 'project:room-dashboard_view' %}" class="btn btn-success" >Add Room</button>                            
@@ -427,17 +422,6 @@
                                         {% endfor %}
                                     </select>
                                   </div>
-
-                                  <!-- <div class = "form-group">
-                                    <label><b>Room Type</b></label>
-                                      <select class="form-select"  name="update-room" aria-label="Default select example">
-                                        {% for rooms in mr %}  
-                                            
-                                          <option value="{{rooms.room_id}}">{{rooms.meeting_room}}</option>
-                                       
-                                        {% endfor %}
-                                      </select>
-                                  </div> -->
                               </div>
                         <div class="modal-footer">  
                             <button type="submit" id = "btnUpdateUsers" name = "btnUpdateRoom" href = "{% url 'project:room-dashboard_view' %}" class="btn btn-success" >Save Changes</button>                            
